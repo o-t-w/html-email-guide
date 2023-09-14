@@ -1,0 +1,56 @@
+:root {
+    --sl-text-2xl: 20px;
+    --sl-text-3xl: 24px;
+    --sl-text-4xl: 30px;
+    --sl-text-5xl: 32px;
+}
+
+.scribble {
+    font-family: 'redacted';
+}
+
+h1,h2,h3,h4,h5,h6, .site-title {
+    font-family: ui-rounded, system-ui;
+}
+
+@media(min-width: 800px) {
+    .hero img {
+        position: relative;
+        top: 44px;
+        max-width: 300px;
+    }
+}
+
+
+.fancy-button {
+    background-image: linear-gradient(rgb(104, 98, 234), rgb(70, 66, 194));
+    text-shadow: rgba(4, 0, 108, 0.408) 1px 1px 1px;
+    border: 1px solid rgb(91, 81, 192);
+    color: rgb(250, 250, 250) !important;
+    font-size: 16px;
+    box-shadow: rgba(255, 255, 255, 0.25) 0px 1px 1px 0px inset;
+    border-radius: 6px;
+    font-family: system-ui;
+    padding-block: 8px;
+    padding-inline: 32px;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  
+  .less-fancy-button {
+    background-color: rgb(76, 69, 212);
+    border: 1px solid rgb(91, 81, 192);
+    color: rgb(250, 250, 250) !important;
+    font-size: 16px;
+    border-radius: 6px;
+    font-family: system-ui;
+    padding-block: 8px;
+    padding-inline: 32px;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  
+  .button-container .less-fancy-button:hover, .button-container .fancy-button:hover {
+    cursor: pointer;
+    color: white !important;
+  }
