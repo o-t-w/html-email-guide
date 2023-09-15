@@ -10,9 +10,7 @@ The following code can copy/pasted as a starting-off point for all your emails:
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
-  <meta name="format-detection" content="telephone=no, date=no, address=no, email=no, url=no">
   <meta name="x-apple-disable-message-reformatting">
   <title>Your email title goes here</title>
   <style>
@@ -29,6 +27,28 @@ The following code can copy/pasted as a starting-off point for all your emails:
 
 ## Things to put in the `<head>`
 
-:::danger
-The head will be stripped out by Yahoo on Android DOUBLE CHECK THIS.
-:::
+## CSS reset
+A reset is some CSS boilerplate to include in the `<head>` to reduce inconsistencies between email clients. Given that this page has told you to mostly use inline styles, the idea of using a CSS reset in the `<head>` might sound odd, but there are certain styles you'll want to include with every email you send. 
+
+### Blue links on iOS an macOS
+In any mail app on macOS, any email address written in the content of your email will be automatically transformed into a link. On iOS, the same is also true of physical addresses.
+
+```html
+<p>For help feel free to email us at help@somecompany.com or send us a letter at 6 Pancras Sq, London N1C 4AG</p>
+```
+
+These links do provide useful behaviour: clicking an address will automatically show that location in whatever map app you have installed, clicking an email address will automatically open your default email app and create a new message with the To field already filled out, etc. However, it can clash with your visual styling. 
+
+You can remove this styling in a rather manual labour-intensive way:
+
+```html
+<p>For help feel free to email us at <span class="ios-remove-link-styling">help@somecompany.com</span> or send us a letter at 6 Pancras Sq, London N1C 4AG</p>
+```
+
+```css
+.ios-remove-link-styling a {
+color: inherit !important;
+text-decoration: none !important;
+}
+```
+

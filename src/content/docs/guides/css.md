@@ -21,12 +21,12 @@ The CSS in the `<style>` tag in the head gets removed in some circumstances, whi
 On the web it's common to set `box-sizing: border-box;` on all HTML elements. This is not supported by Yahoo Mail or AOL, so we're stuck with the default of `box-sizing: content-box`.
 
 ## Color
-Both the hex syntax (`#ffffff`) and `rgb()` syntax are supported everywhere. `rgb()` needs to use comma-seperated values (`rgb(200, 120, 50)`) because space-seperated values (`rgb(200 120 50)`) will [cause issues](https://www.caniemail.com/features/css-rgb/) in some popular email clients, such as Gmail. 
+Both the hex syntax (`#ffffff`) and `rgb()` syntax are supported everywhere. Use comma-seperated values (`rgb(200, 120, 50)`) when using `rgb()` because space-seperated values (`rgb(200 120 50)`) will [cause issues](https://www.caniemail.com/features/css-rgb/) in some popular email clients, such as Gmail. 
 
 More recent color functions such as `lch()`, `oklch()`, `lab()` and `oklab()` lack broad support and should not be used.
 
-## Don't use `rem` or `em`
-`rem` and `em` units are not universally supported by email clients. Use `px` for font sizes. 
+## Units
+`rem` is not universally supported so should not be used. `em` units, `px` and percentages all have good support. 
 
 ## Make use of inheritance
 You need to use inline styles but you can still make good use of inheritance to avoid repitition. Rather than defining the `font-family` seperately on every element that contains text, define the `font-family` on a container element and everything inside it will inherit the value:
