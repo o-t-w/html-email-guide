@@ -5,32 +5,39 @@ description: Styling your email
 
 ## Use inline CSS
 
-The vast majority of email clients support `<style>` tags in the `<head>` but there are some edge cases. If you forward an email in the desktop webmail version of Gmail, all `<style>` tags are removed in the forwarded copy. Third-party email accounts used with the Gmail app don’t support the `<style>` tag either.
+The vast majority of email clients support `<style>` tags in the `<head>` but there are some edge cases. Third-party email accounts used with the Gmail app don’t support the `<style>` tag. If you forward an email in the desktop webmail version of Gmail, all `<style>` tags are removed in the forwarded copy. The Yahoo Mail app for Android [strips styles](https://github.com/hteumeuleu/email-bugs/issues/28) from the `<head>`.
 
-A `<style>` tag in the `<head>` is necessary to define things like media queries, `:hover` styles, and `@font-face` declarations because they can’t be defined inline. Don't use a `<link>` tag with styles defined in a seperate file as most popular email clients do not support this. For all other styles, use inline CSS.
+A `<style>` tag in the `<head>` is necessary to define things like media queries, `:hover` styles, and `@font-face` declarations because they can’t be defined inline. For all other styles, use inline CSS.
 
-### `!important`
+Never use a `<link>` tag with styles defined in a seperate file as most popular email clients do not support this. 
+
+## `!important`
 Use of `!important` is often considered a bad practice in frontend development. In email development its a necessity. `!important` is the only way to override an inline style. If you want styles in the `<head>` to override styles defined inline, `!important` is the only option.
-
-```css
-SHOW MEDIA QUERY CODE WITH IMPORTANT!
-```
 
 ## Mobile first
 The CSS in the `<style>` tag in the head gets removed in some circumstances, which means none of your media queries will work. For that reason, its better to use a mobile-first approach. A single column of content (the typical mobile email design) will be readable and look acceptable on desktop if the `<style>` tag is stripped out. By contrast, a desktop layout of multiple columns usually looks terrible on a phone as the content can't comfortably fit so looks squished.
 
-## How wide should an email be?
-
 ## box-sizing
-On the web it's incredibly common to set `box-sizing: border-box;`. This is not supported by Yahoo Mail or AOL, so we're stuck with the default of `box-sizing: content-box`.
+On the web it's common to set `box-sizing: border-box;` on all HTML elements. This is not supported by Yahoo Mail or AOL, so we're stuck with the default of `box-sizing: content-box`.
 
-## Units: use pixels and percentages
-`rem` and `em` units are not universally supported by email clients. 
+## Color
+Both the hex syntax (`#ffffff`) and `rgb()` syntax are supported everywhere. `rgb()` needs to use comma-seperated values (`rgb(200, 120, 50)`) because space-seperated values (`rgb(200 120 50)`) will [cause issues](https://www.caniemail.com/features/css-rgb/) in some popular email clients, such as Gmail. 
 
-## Q: Should you put styles on the body? Or does it get removed??
+More recent color functions such as `lch()`, `oklch()`, `lab()` and `oklab()` lack broad support and should not be used.
+
+## Don't use `rem` or `em`
+`rem` and `em` units are not universally supported by email clients. Use `px` for font sizes. 
 
 ## Make use of inheritance
-Yes, you still need to use inline styles, but you can still make good use of inheritance. 
+You need to use inline styles but you can still make good use of inheritance to avoid repitition. Rather than defining the `font-family` seperately on every element that contains text, define the `font-family` on a container element and everything inside it will inherit the value:
+
+```html
+<body>
+  <div style="font-size:16px; font-family: system-ui;">
+    <!-- email content goes here -->
+  </div>
+</body>
+```
 
 ## Progressive enhancement
 There are two approaches to email design. Let's take this CTA link design as an example:
