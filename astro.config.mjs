@@ -38,15 +38,15 @@ export default defineConfig({
 					label: 'Guides',
 					items: [
 						// Each item here is one entry in the navigation menu.
-						{ label: 'Boilerplate', link: '/guides/boilerplate/' },
+						// { label: 'Boilerplate', link: '/guides/boilerplate/' },
 						{ label: 'HTML', link: '/guides/html/' },
 						{ label: 'CSS', link: '/guides/css/' },
 						{ label: 'Layout', link: '/guides/layout/' },
 						{ label: 'Fonts', link: '/guides/fonts/' },
 						{ label: 'Images', link: '/guides/images/' },
-						{ label: 'Dark Mode', link: '/guides/dark-mode/' },
+						// { label: 'Dark Mode', link: '/guides/dark-mode/' },
 						{ label: 'Components', link: '/guides/components/' },
-						{ label: 'Testing', link: '/guides/testing/' },
+						// { label: 'Testing', link: '/guides/testing/' },
 						{ label: 'Microsoft Outlook and Windows Mail', link: '/guides/outlook/' },
 					],
 				},

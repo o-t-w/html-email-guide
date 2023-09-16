@@ -3,7 +3,7 @@ title: Boilerplate
 description: The reusable shell of every email.
 ---
 
-The following code can copy/pasted as a starting-off point for all your emails:
+The following code can copy/pasted as a starting-off point for your emails:
 
 ```html
 <!DOCTYPE html>
@@ -11,7 +11,6 @@ The following code can copy/pasted as a starting-off point for all your emails:
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
-  <meta name="x-apple-disable-message-reformatting">
   <title>Your email title goes here</title>
   <style>
     /* Anything that can't be defined inline goes here: media queries, @font-face declarations, etc */
@@ -26,6 +25,9 @@ The following code can copy/pasted as a starting-off point for all your emails:
 ```
 
 ## Things to put in the `<head>`
+
+### `<meta name="x-apple-disable-message-reformatting">`
+If you're experiencing [issues](https://github.com/hteumeuleu/email-bugs/issues/18) in Apple Mail, this meta tag might help. 
 
 ## CSS reset
 A reset is some CSS boilerplate to include in the `<head>` to reduce inconsistencies between email clients. Given that this page has told you to mostly use inline styles, the idea of using a CSS reset in the `<head>` might sound odd, but there are certain styles you'll want to include with every email you send. 
