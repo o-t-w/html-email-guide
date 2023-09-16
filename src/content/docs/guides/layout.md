@@ -21,7 +21,20 @@ Many long-standing standard CSS properties lack broad support among email client
 ## `display: inline-block`
 Inline block is the most reliable way to approach layout in email. 
 
-Here's an example of a three-column layout:
+Here's an example of a three-column layout using a Tailwind-inspired `md-` prefix for styles that only apply to screens that are a medium width or larger:
+
+```css
+@media (min-width: 600px) {
+  .md-width-30 {
+    width: 30%;
+    display: inline-block;
+  }
+  
+  .md-mr-5 {
+    margin-right: 5%;
+  }
+}
+```
 
 <div style="font-size: 0; line-height: 1.3; font-family: redacted; margin-bottom: 32px;">
     <p style="margin-top: 0; display: inline-block; width: 30%; font-size: 16px; margin-right: 5%">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos magni, accusantium cumque veritatis perspiciatis tenetur.</p>
@@ -31,11 +44,9 @@ Here's an example of a three-column layout:
 
 ```html
 <div style="font-size: 0;">
-    <p style="display: inline-block; width: 30%; font-size: 16px; margin-right: 5%;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos magni, accusantium cumque veritatis perspiciatis tenetur.</p>
-  
-    <p style="display: inline-block; width: 30%; font-size: 16px; margin-right: 5%;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos magni, accusantium cumque veritatis perspiciatis tenetur.</p>
-
-    <p style="display: inline-block; width: 30%; font-size: 16px;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos magni, accusantium cumque veritatis perspiciatis tenetur.</p>
+    <p class="md-width-30 md-mr-5" style="font-size: 16px;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos magni, accusantium cumque veritatis perspiciatis tenetur.</p>
+    <p class="md-width-30 md-mr-5" style="font-size: 16px;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos magni, accusantium cumque veritatis perspiciatis tenetur.</p>
+    <p class="md-width-30" style="font-size: 16px;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos magni, accusantium cumque veritatis perspiciatis tenetur.</p>
 </div>
 ```
 
