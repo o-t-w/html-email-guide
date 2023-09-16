@@ -1,6 +1,8 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
+const site = 'https://html-email-guide.vercel.app/';
+
 // https://astro.build/config
 export default defineConfig({
 	integrations: [
@@ -17,7 +19,14 @@ export default defineConfig({
 					tag: 'meta',
 					attrs: {
 						property: 'og:image',
-						content: 'og.png'
+						content: site + 'og.png'
+					}
+				},
+				{
+					tag: 'meta',
+					attrs: {
+						property: 'twitter:image',
+						content: site + 'og.png'
 					}
 				}
 			],
