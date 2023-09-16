@@ -37,11 +37,11 @@ Cosmin Popovici, the creator of Maizzle, has said that the framework is “geare
 
 ## Parcel
 
-Parcel is an online text editor specifically designed for building emails. It’s a great tool that’s become much loved among the HTML email community. Parcel offers plenty of useful features for free but the components functionality requires a pro or business subscription.
+Parcel is an online text editor specifically designed for building emails. It’s a great tool that’s become much loved among the HTML email community. Parcel offers plenty of useful features for free but the [components functionality](https://parcel.io/docs/components) requires a pro or business subscription.
 
 ## React Email
 
-React Email is an open-source project that describes itself as " acollection of high-quality, unstyled components for creating beautiful emails using React". Along with customizing those components with CSS, it also enables you to write components from scratch. Email does not support JavaScript. React email uses React purely as a templating syntax that outputs HTML markup.
+[React Email](https://react.email/) is an open-source project that describes itself as " acollection of high-quality, unstyled components for creating beautiful emails using React and TypeScript". Along with customizing those components with CSS, it also enables you to write components from scratch. Email does not support JavaScript. React email uses React purely as a templating syntax that outputs HTML markup.
 
 React Email has marketed itself as modernising HTML email. Throwing React at the hard problems of developing for email doesn’t solve much. Using React can’t magically improve client support for any custom fonts or CSS features. I’m not a fan of having to use `className` instead of `class` or `style={{}}` instead of `style=""`. I’d rather just use HTML syntax. It's a beta project thats still bug-ridden and badly documented so I won't cover it further here. 
 

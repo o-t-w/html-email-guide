@@ -19,9 +19,11 @@ Many long-standing standard CSS properties lack broad support among email client
 - `align-items`
 
 ## `display: inline-block`
-Inline block is the most reliable way to approach layout in HTML email.
+Inline block is the most reliable way to approach layout in email. 
 
-<div style="font-size: 0; line-height: 1.3; font-family: redacted;">
+Here's an example of a three-column layout:
+
+<div style="font-size: 0; line-height: 1.3; font-family: redacted; margin-bottom: 32px;">
     <p style="margin-top: 0; display: inline-block; width: 30%; font-size: 16px; margin-right: 5%">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos magni, accusantium cumque veritatis perspiciatis tenetur.</p>
     <p style="margin-top: 0; display: inline-block; width: 30%; font-size: 16px; margin-right: 5%">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos magni, accusantium cumque veritatis perspiciatis tenetur.</p>
     <p style="margin-top: 0; display: inline-block; width: 30%; font-size: 16px;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos magni, accusantium cumque veritatis perspiciatis tenetur.</p>

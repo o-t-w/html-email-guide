@@ -17,7 +17,7 @@ Use of `!important` is often considered a bad practice in frontend development. 
 ## Mobile first
 The CSS in the `<style>` tag in the head gets removed in some circumstances, which means none of your media queries will work. For that reason, its better to use a mobile-first approach. A single column of content (the typical mobile email design) will be readable and look acceptable on desktop if the `<style>` tag is stripped out. By contrast, a desktop layout of multiple columns usually looks terrible on a phone as the content can't comfortably fit so looks squished.
 
-## box-sizing
+## `box-sizing`
 On the web it's common to set `box-sizing: border-box;` on all HTML elements. This is not supported by Yahoo Mail or AOL, so we're stuck with the default of `box-sizing: content-box`.
 
 ## Color
@@ -60,13 +60,15 @@ Or you can adopt a progressive enhancement approach. Use a gradient but add a so
 style="background-color: #4642c2; background-image: linear-gradient(#6862ea, #4642c2);"
 ```
 
-Accept that `text-shadow` and `box-shadow` won't work for everybody but use them anyway.
+`text-shadow` and `box-shadow` won't be seen by everybody but you can use them anyway. 
 
 ```html
 <div style="display: flex;">
     <a href="https://example.com/" style="font-weight: 500; font-size: 18px; color: white; text-decoration: none; background-color: #4642c2; background-image: linear-gradient(#6862ea, #4642c2); padding: 12px 32px; border-radius: 6px; margin: 24px auto; box-shadow: #a09cec 0px 1px 1px 0px inset; border: 1px solid #5b51c0; text-shadow: #2e2b88 1px 1px 1px; display: inline-block;">Get the bundle</a>
 </div>
 ```
+
+No email is ever going to look exactly the same in every email client, regardless of the approach you take.
 
 ## Don't use `@supports`
 Most of the time, if a CSS feature fails to work in a certain email client its because it's been stripped out of the markup, not because the browser doesn't support the feature. For example, Google Chrome browser supports CSS grid. If you use `display: grid` in an email and open the email using Gmail in Chrome, you can inspect the email to see that `display: grid` has been removed from the markup. `@supports` will give a lot of false positives, so should not be used. 
