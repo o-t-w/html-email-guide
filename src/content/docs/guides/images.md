@@ -43,4 +43,4 @@ Other animated image formats (animated WebP, animated PNG) are not well supporte
 **Show animated avif and gif side by side here**
 
 ## Optimise your images
-Run your images through a tool like [Squoosh](https://squoosh.app/) or TinyPNG to reduce the file size.
+Run your images through a tool like [Squoosh](https://squoosh.app/) to reduce the file size.

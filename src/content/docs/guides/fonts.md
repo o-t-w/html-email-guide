@@ -117,7 +117,7 @@ The obvious drawback of system fonts is that your website will look different on
 
 ## Email client fonts
 
-Email web clients and native applications often come with their own fonts. Gmail embeds Google Sans. Outlook.com embeds Segoe UI. You can utilise these as part of your font-stack. 
+Email web clients and native applications often embed their own fonts. Gmail uses Google Sans. Outlook.com embeds Segoe UI. You can utilise these as part of your font-stack. 
 
 ```html
 <div style="font-family: Google Sans, system-ui;">

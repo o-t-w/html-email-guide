@@ -4,39 +4,46 @@ description: Positioning things
 ---
 
 Many long-standing standard CSS properties lack broad support among email clients. This includes many properties used for layout:
+- `display: grid` and most grid-related CSS properties
 - `position`
 - `z-index`
-- `display: grid` and most grid-related CSS properties
+- `gap`, `column-gap` or `row-gap`
+- `calc()`
+- `transform` and `translate`
 
-`display: flex` is supported in most email clients but there are some large caveats - the following properties are not widely supported:
+`display: flex` is supported by the majority of email clients. However, most flex-related CSS properties are not widely supported, including:
 - `flex-wrap`
 - The `flex` shorthand property or `flex-grow`, `flex-shrink` or `flex-basis`
-- `gap`, `column-gap` or `row-gap`
 - `flex-direction`
 - `justify-content`
 - `align-items`
 
-EXPLAIN ISSUES WITH INLINE BLOCK - EG RANDOM WHITE SPACE, NEEDING TO SET font-size: 0 and line-height: 0;
+## `display: inline-block`
+Inline block is the most reliable way to approach layout in HTML email.
 
-### Multiple columns
-I'm going to take this email from Vimeo as inspiration and recreate its three-column layout. 
+<div style="font-size: 0; line-height: 1.3; font-family: redacted;">
+    <p style="margin-top: 0; display: inline-block; width: 30%; font-size: 16px; margin-right: 5%">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos magni, accusantium cumque veritatis perspiciatis tenetur.</p>
+    <p style="margin-top: 0; display: inline-block; width: 30%; font-size: 16px; margin-right: 5%">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos magni, accusantium cumque veritatis perspiciatis tenetur.</p>
+    <p style="margin-top: 0; display: inline-block; width: 30%; font-size: 16px;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos magni, accusantium cumque veritatis perspiciatis tenetur.</p>
+</div>
 
-![](/assets/vimeo-email.png)
+```html
+<div style="font-size: 0;">
+    <p style="display: inline-block; width: 30%; font-size: 16px; margin-right: 5%;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos magni, accusantium cumque veritatis perspiciatis tenetur.</p>
+  
+    <p style="display: inline-block; width: 30%; font-size: 16px; margin-right: 5%;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos magni, accusantium cumque veritatis perspiciatis tenetur.</p>
 
-We can use margins instead of `gap`. You might thing you could use an advanced selector here like:
-
-```css
-.desktop-gap-42 > * + *{
-    margin-left: 42px;                
-}
+    <p style="display: inline-block; width: 30%; font-size: 16px;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos magni, accusantium cumque veritatis perspiciatis tenetur.</p>
+</div>
 ```
 
-Complex selectors aren't supported everywhere, so to be safe we'll use a utility class instead:
+An unfortunate quirk of using `inline-block` for layout: even if you set `margin: 0`, a series of `inline-block` elements will have white spaces between them. This adds to the overall width, meaning if you have two elements both sized at 50%, the combined total will be over 100%, so they won't be displayed side by side. That's why in the code shown above I've set `font-size: 0` on the parent element, which removes the excess space.  
 
-## `display: flex`
+Gmail on iOS adds `word-spacing: 1px;` to the body. This also creates extra space between elements which prevents them from displaying side-by-side. Setting `word-spacing:normal` fixes the issue.
 
-
-## `display: inline-block`
+```html
+<body style="word-spacing:normal">
+```
 
 ## The `float` property
 
