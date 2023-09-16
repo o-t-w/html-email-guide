@@ -17,7 +17,7 @@ export default defineConfig({
 					tag: 'meta',
 					attrs: {
 						property: 'og:image',
-						content: 'og.jpg'
+						content: 'og.png'
 					}
 				}
 			],
@@ -32,9 +32,9 @@ export default defineConfig({
 						{ label: 'Boilerplate', link: '/guides/boilerplate/' },
 						{ label: 'HTML', link: '/guides/html/' },
 						{ label: 'CSS', link: '/guides/css/' },
+						{ label: 'Layout', link: '/guides/layout/' },
 						{ label: 'Fonts', link: '/guides/fonts/' },
 						{ label: 'Images', link: '/guides/images/' },
-						{ label: 'Layout', link: '/guides/layout/' },
 						{ label: 'Dark Mode', link: '/guides/dark-mode/' },
 						{ label: 'Components', link: '/guides/components/' },
 						{ label: 'Testing', link: '/guides/testing/' },
