@@ -11,15 +11,16 @@ Many long-standing standard CSS properties lack broad support among email client
 - `calc()`
 - `transform` and `translate`
 
-`display: flex` is supported by the majority of email clients. However, most flex-related CSS properties are not widely supported, including:
+`display: flex` is supported by the [majority of email clients](https://www.caniemail.com/features/css-display-flex/), with the notable exception being Gmail when used with a non-Gmail email address. However, most flex-related CSS properties are not widely supported, including:
 - `flex-wrap`
 - The `flex` shorthand property or `flex-grow`, `flex-shrink` or `flex-basis`
 - `flex-direction`
 - `justify-content`
 - `align-items`
 
+Inline block is currently the most reliable way to approach layout in email. 
+
 ## `display: inline-block`
-Inline block is the most reliable way to approach layout in email. 
 
 Here's an example of a three-column layout using a Tailwind-inspired `md-` prefix for styles that only apply to screens that are a medium width or larger:
 
