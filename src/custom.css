@@ -58,3 +58,16 @@ h1,h2,h3,h4,h5,h6, .site-title {
   pre {
     white-space: pre-wrap !important;
   }
+
+  .sidebar a span {
+    font-size: 15px !important;
+    font-weight: 440;
+  }
+
+  .sidebar a {
+    padding-block: 2px;
+  }
+
+  :root {
+    --sl-sidebar-width: 16rem;
+  }

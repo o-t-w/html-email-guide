@@ -34,9 +34,6 @@ export default defineConfig({
 				github: 'https://github.com/withastro/starlight',
 			},
 			sidebar: [
-				{
-					label: 'Guides',
-					items: [
 						// Each item here is one entry in the navigation menu.
 						// { label: 'Boilerplate', link: '/guides/boilerplate/' },
 						{ label: 'HTML', link: '/guides/html/' },
@@ -48,8 +45,6 @@ export default defineConfig({
 						{ label: 'Components', link: '/guides/components/' },
 						// { label: 'Testing', link: '/guides/testing/' },
 						{ label: 'Microsoft Outlook and Windows Mail', link: '/guides/outlook/' },
-					],
-				},
 			],
 		}),
 	],
