@@ -10,6 +10,7 @@ Many long-standing standard CSS properties lack broad support among email client
 - `gap`, `column-gap` or `row-gap`
 - `calc()`
 - `transform` and `translate`
+- negative margins (e.g. `margin-top: -12px;`)
 
 `display: flex` is supported by the [majority of email clients](https://www.caniemail.com/features/css-display-flex/), with the notable exception being Gmail when used with a non-Gmail email address. However, most flex-related CSS properties are not widely supported, including:
 - `flex-wrap`
