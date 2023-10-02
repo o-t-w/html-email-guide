@@ -17,6 +17,9 @@ Use of `!important` is often considered a bad practice in frontend development. 
 ## Mobile first
 The CSS in the `<style>` tag in the head gets removed in some circumstances, which means none of your media queries will work. For that reason, its better to use a mobile-first approach. A single column of content (the typical mobile email design) will be readable and look acceptable on desktop if the `<style>` tag is stripped out. By contrast, a desktop layout of multiple columns usually looks terrible on a phone as the content can't comfortably fit so looks squished.
 
+## Media queries
+In web-based email clients, media queries apply depending on the size of the viewport (aka the users browser window), not depending on the size of the email itself. This is worth keeping in mind for web-based desktop clients like Gmail where a large part of the viewport is taken up by a sidebar that exists seperately from your email. 
+
 ## `box-sizing`
 On the web it's common to set `box-sizing: border-box;` on all HTML elements. This is not supported by Yahoo Mail or AOL, so we're stuck with the default of `box-sizing: content-box`.
 
@@ -26,7 +29,7 @@ Both the hex syntax (`#ffffff`) and `rgb()` syntax are supported everywhere. Use
 More recent color functions such as `lch()`, `oklch()`, `lab()` and `oklab()` lack broad support and should not be used.
 
 ## Units
-`rem` is not universally supported so should not be used. `em` units, `px` and percentages all have good support. 
+`rem` units are not universally supported so should not be used. `em` units, `px` and percentages all have good support. 
 
 ## Make use of inheritance
 You need to use inline styles but you can still make good use of inheritance to avoid repitition. Rather than defining the `font-family` seperately on every element that contains text, define the `font-family` on a container element and everything inside it will inherit the value:

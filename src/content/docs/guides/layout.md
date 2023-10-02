@@ -19,6 +19,10 @@ Many long-standing standard CSS properties lack broad support among email client
 - `justify-content`
 - `align-items`
 
+:::danger[Viewport height bug in Apple Mail]
+The `vh` unit [does not work correctly](https://github.com/hteumeuleu/email-bugs/issues/94) in Apple Mail. 
+:::
+
 Inline block is currently the most reliable way to approach layout in email. 
 
 ## `display: inline-block`

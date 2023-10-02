@@ -41,7 +41,7 @@ export default defineConfig({
 						{ label: 'Layout', link: '/guides/layout/' },
 						{ label: 'Fonts', link: '/guides/fonts/' },
 						{ label: 'Images', link: '/guides/images/' },
-						// { label: 'Dark Mode', link: '/guides/dark-mode/' },
+						{ label: 'Dark Mode', link: '/guides/dark-mode/' },
 						{ label: 'Components', link: '/guides/components/' },
 						// { label: 'Testing', link: '/guides/testing/' },
 						{ label: 'Microsoft Outlook and Windows Mail', link: '/guides/outlook/' },

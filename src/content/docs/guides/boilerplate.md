@@ -14,6 +14,10 @@ The following code can copy/pasted as a starting-off point for your emails:
   <title>Your email title goes here</title>
   <style>
     /* Anything that can't be defined inline goes here: media queries, @font-face declarations, etc */
+
+    :root {
+    color-scheme: light dark;
+    }
   </style>
 </head>
 <body class="body">
@@ -32,6 +36,13 @@ If you're experiencing [issues](https://github.com/hteumeuleu/email-bugs/issues/
 ## CSS reset
 A reset is some CSS boilerplate to include in the `<head>` to reduce inconsistencies between email clients. Given that this page has told you to mostly use inline styles, the idea of using a CSS reset in the `<head>` might sound odd, but there are certain styles you'll want to include with every email you send. 
 
+### `color-scheme`
+The following code is required for the `@prefers-color-scheme` media query to work correctly in Apple Mail:
+```css
+:root {
+  color-scheme: light dark;
+  }
+```
 ### Blue links on iOS an macOS
 In any mail app on macOS, any email address written in the content of your email will be automatically transformed into a link. On iOS, the same is also true of physical addresses.
 
@@ -54,3 +65,81 @@ text-decoration: none !important;
 }
 ```
 
+### Email Normalize
+
+One reset is [Email Normalize](https://github.com/maizzle/email-normalize#about) from the creator of Maizzle. That projects readme gives a good description of what the purpose of a reset is:
+
+> "Like browsers, email clients use default styles for HTML. Unlike browsers, there is little to no standardization, and email developers need to be familiar with many, constantly changing CSS reset techniques."
+
+Here's the bulk of the code:
+
+```css
+/*
+ * Reset body
+ *
+ * Apple Mail, iOS Mail plus many more have preset margin and padding for
+ * the HTML <body> - this normalizes it so rendering is consistent.
+ */
+
+ body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /*
+   * Normalize headings
+   *
+   * Values used are browser CSS defaults.
+   *
+   * Mail.ru:      resets font-size on <h1> & <h3>
+   * Outlook.com:  resets margin on <h3>
+   */
+  
+  h1 {
+    margin: 0.67em 0;
+    font-size: 2em;
+  }
+  
+  h2 {
+    margin: 0.83em 0;
+    font-size: 1.5em;
+  }
+  
+  /* `html[dir] h3` increases specificity, to override Outlook.com */
+  
+  h3,
+  html[dir] h3 {
+    margin: 1em 0;
+    font-size: 1.17em;
+  }
+  
+  /**
+   * Normalize triggered links, such as dates or phone numbers,
+   * in Apple Mail / iOS Mail
+   */
+  
+  a[x-apple-data-detectors] {
+    color: inherit !important;
+    text-decoration: none !important;
+    font-size: inherit !important;
+    font-family: inherit !important;
+    font-weight: inherit !important;
+    line-height: inherit !important;
+  }
+  
+  /* Normalize links in Gmail */
+  
+  u + #body a {
+    color: inherit;
+    text-decoration: none;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+  }
+  
+  /* Hide the download button on large images */
+  
+  u ~ div img + div > div {
+    display: none;
+  }
+```

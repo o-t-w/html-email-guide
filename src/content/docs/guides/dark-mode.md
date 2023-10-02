@@ -14,14 +14,16 @@ On a website, only light mode is supported by default. Dark mode is something de
 }
 ```
 
+By specifying `light dark`, were indicating that we want to use a light color scheme in light mode and a dark color scheme in dark mode.
+
 #### 2. A HTML `<meta>` tag in the `<head>` of the page
 ```html
 <meta name="color-scheme" content="light dark">
 ```
 
-Both these approaches achieve the same end result - the default colors will change depending on the users settings. In light mode the default text color will be black and the default background-color will be white. In dark mode, the default text color will be white and the default background will be black. However, any colors you explicitly set with CSS will remain unchanged. 
+On a website, both these approaches achieve the same end result — the default colors will change depending on the users settings. In light mode the default text color will be black and the default background-color will be white. In dark mode, the default text color will be white and the default background will be black. However, any colors you explicitly set with CSS will remain unchanged. 
 
-Alternatively, you can set the CSS property or meta tag to `dark` so the default colors will be white text on a black background regardless of user preferences.
+Alternatively, if you want to use a dark color scheme regardless of user preferences you can set the CSS property or meta tag to `dark` so the default colors will always be white text on a black background. 
 
 ```css
 :root {
@@ -29,27 +31,54 @@ Alternatively, you can set the CSS property or meta tag to `dark` so the default
 }
 ```
 
-## Dark mode in email
-The big difference in email is that almost all email clients act as if `color-scheme: light dark` or `<meta name="color-scheme" content="light dark">` were set. That is, dark mode is enabled by default, so default colors will change depending on user preferences. Not only that, but its impossible to opt out of dark mode in the majority of clients because the `color-scheme` CSS property and meta tag are not widely supported.
+There's also an `only` keyword to make extra sure your chosen color-scheme is respected.
 
-:::danger[Gmail]
-Gmail is a special case. It doesn't just change default colors. It will alter background-colors and text colors that you've set in CSS, often leading to ugly color combinations and unreadable color-contrast. Dark mode is imposed on your email but you have no control over the colors that are used because the `prefers-color-scheme` media query is not supported. The `color-scheme` meta tag and CSS property are not supported. 
+```css
+:root {
+  color-scheme: only light; /* use a light color scheme, including in dark mode */
+}
+```
+
+In my own experience, the `only` keyword is unecessary and the above code is equivalent to `:root { color-scheme: light;}`
+
+**In email clients, support for dark mode is the default**. In contrast to a web page, email clients act as if `color-scheme: light dark` were set on the HTML element. It's impossible to opt out of dark mode in the majority of clients because the `color-scheme` CSS property and meta tag are not widely supported. The `color-scheme` CSS property is only supported in Apple Mail, Samsung Mail and Thunderbird. The meta tag is only supported by Thunderbird and Apple Mail on macOS.
+
+:::danger[Apple Mail bug]
+You need to include `:root { color-scheme: light dark; }` in your CSS for the `prefers-color-scheme` media query to [work reliably in Apple Mail](https://github.com/hteumeuleu/email-bugs/issues/104).
 :::
 
-You can keep the default colors as light mode only in the meta tag doesn't work:
-```html
-<meta name="color-scheme" content="light">
-```
+### Inverted colors
+Certain email clients don't just change default colors. Gmail will invert background-colors and text colors that you've set in CSS, often leading to ugly color combinations and unreadable color-contrast. Dark mode is imposed on your email but you have no control over the colors that are used because the `prefers-color-scheme` media query is not supported. The `color-scheme` meta tag and CSS property are not supported. Here's some advice:
 
-Specifying light mode only using the CSS `color-scheme` property is only supported in Apple Mail:
+**1. Test your color choices early to make sure they look good in both light and dark mode.** 
+
+**2. Gradients don't get altered.**
+
+You can create a solid color using the CSS gradient syntax: 
+
 ```css
-color-scheme: light;
+background-image: linear-gradient(#f3f6fd, #f3f6fd);
 ```
-Dark mode is imposed on you but you have little control over what your email will actually look like in dark mode because some popular email clients (Gmail, Yahoo) do not support the `prefers-color-scheme` media query. 
+Unlike `background-color: #f3f6fd;`, this won't get altered.
+
+The [workaround](https://www.hteumeuleu.com/2021/fixing-gmail-dark-mode-css-blend-modes/) for preventing text colors from being inverted is more complex. The solution makes use of CSS blend modes, which won't work for non-Gmail accounts.
+
+**2. Images don't get altered.**
+By and large, images, whether a CSS `background-image` or a HTML `<img>`, do not get altered by dark mode. Small images in Gmail seems to be the sole exception. **(Got the problem in Gmail with an image 60x60. Had to force it to 120x120 to get Gmail to stop it. -[Rémi Parmentier](https://emailgeeks.slack.com/archives/C1Z733K1P/p1695293828960729?thread_ts=1695289570.316099&cid=C1Z733K1P) )**
 
 ## The `prefers-color-scheme` media query
-So far we've talked about default colors, but you might also want to specify you're own chosen `background-color` or text colors for dark mode.
+So far I've talked about default colors, but you might also want to specify you're own chosen colors for dark mode. For that we need the `prefers-color-scheme` media query:
 
-### Outlook
-- The theme switcher in the Outlook app does not trigger the media query! ...
+```css
+html, body {
+        background-color: #e7eff5;
+        color: #001625;
+      }
 
+@media(prefers-color-scheme: dark) {
+  html, body {
+    background-color: #001422;
+    color: #f0fbfb;
+  }
+}
+```
